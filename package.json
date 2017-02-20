@@ -1,0 +1,16 @@
+{
+  "name": "flex",
+  "version": "1.0.0",
+  "description": "flex+栅格系统",
+  "author": "PJL",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhangrongliang/vue-model"
+  },
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-plumber": "^1.1.0",
+    "gulp-stylus": "^2.6.0"
+  }
+}

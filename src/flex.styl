@@ -1,0 +1,103 @@
+//standard:标准24栅格5+无单数  full:24栅格全尺寸 tiny:12栅格5+无单数
+$v='full'
+$max_row=24
+$list = 1, 2, 3, 4, 5, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24
+if $v=='tiny'
+  $max_row=12
+  $list = 1, 2, 3, 4, 5, 6, 8, 10, 12
+if $v=='full'
+  $max_row=24
+  $list = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24
+
+
+col(int, v)
+  >.span-{int}
+    if v=='vertical'
+      height round((int / $max_row * 100)%)
+      width auto
+    else
+      width round((int / $max_row * 100)%)
+      height auto
+
+offset(int, v)
+  .offset-{int}
+    margin-{v} round((int / $max_row * 100)%)
+
+order(int)
+  >.order-{int}
+    order int
+
+gutter(int, v)
+  >.gutter-{int}
+    if v=='vertical'
+      padding-top (int/2)px
+      padding-bottom (int/2)px
+    else
+      padding-left (int/2)px
+      padding-right (int/2)px
+
+gutter-child(int, v)
+  &.gutter-{int}
+    >.fill
+      if v=='vertical'
+        padding (int/2)px 0
+      else
+        padding 0 (int/2)px
+    for num in $list
+      >.span-{num}
+        if v=='vertical'
+          padding (int/2)px 0
+        else
+          padding 0 (int/2)px
+
+.flex
+  display flex
+  flex-direction row
+  height 100%
+  width 100%
+  for num in $list
+    offset(num, 'left')
+    gutter(num, 'horizontal')
+    gutter-child(num, 'horizontal')
+  &.wrap-reverse
+    flex-wrap wrap-reverse
+  &.wrap
+    flex-wrap wrap
+  &.start
+    justify-content flex-start
+  &.end
+    justify-content flex-end
+  &.center
+    justify-content center
+  &.between
+    justify-content space-between
+  &.around
+    justify-content space-around
+  &.top
+    align-items flex-start
+  &.bottom
+    align-items flex-end
+  &.middle
+    align-items center
+  &.baseline
+    align-items baseline
+  &.stretch
+    align-items stretch
+  &.vertical
+    flex-direction column
+    for num in $list
+      offset(num, 'top')
+      gutter(num, 'vertical')
+      gutter-child(num, 'vertical')
+    &
+      for num in $list
+        col(num, 'vertical')
+  &
+    for num in $list
+      col(num,'horizontal')
+      order(num)
+    .fill
+      flex-grow 1
+      overflow auto
+  >*
+    col($max_row, 'horizontal')
