@@ -1,9 +1,10 @@
 {
-  "name": "flex",
+  "name": "flex.stylus",
   "version": "1.0.0",
   "description": "flex+栅格系统",
   "author": "PJL",
   "license": "MIT",
+  "main": "dist/flex.min.css",
   "repository": {
     "type": "git",
     "url": "https://github.com/qq447665722/flex"
