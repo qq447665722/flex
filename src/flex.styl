@@ -10,7 +10,7 @@ if $v=='full'
   $list = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24
 
 
-col(int, v)
+span(int, v)
   >.span-{int}
     if v=='vertical'
       height round((int / $max_row * 100)%)
@@ -91,13 +91,12 @@ gutter-child(int, v)
       gutter-child(num, 'vertical')
     &
       for num in $list
-        col(num, 'vertical')
+        span(num, 'vertical')
   &
     for num in $list
-      col(num,'horizontal')
+      span($max_row, 'horizontal')
+      span(num,'horizontal')
       order(num)
     .fill
       flex-grow 1
       overflow auto
-  >*
-    col($max_row, 'horizontal')

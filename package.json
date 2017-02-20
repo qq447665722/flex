@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zhangrongliang/vue-model"
+    "url": "https://github.com/qq447665722/flex"
   },
   "dependencies": {
     "gulp": "^3.9.1",
