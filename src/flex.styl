@@ -1,5 +1,5 @@
 //standard:标准24栅格5+无单数  full:24栅格全尺寸 tiny:12栅格5+无单数
-$v='full'
+$v='standard'
 $max_row=24
 $list = 1, 2, 3, 4, 5, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24
 if $v=='tiny'
@@ -8,7 +8,6 @@ if $v=='tiny'
 if $v=='full'
   $max_row=24
   $list = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24
-
 
 span(int, v)
   >.span-{int}
@@ -37,12 +36,7 @@ gutter(int, v)
       padding-right (int/2)px
 
 gutter-child(int, v)
-  &.gutter-{int}
-    >.fill
-      if v=='vertical'
-        padding (int/2)px 0
-      else
-        padding 0 (int/2)px
+  &.gutters-{int}
     for num in $list
       >.span-{num}
         if v=='vertical'
